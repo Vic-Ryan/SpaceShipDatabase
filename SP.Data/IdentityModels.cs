@@ -46,7 +46,7 @@ namespace SP.Data
                 .Configurations
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
-        }
+        } //Comment to attempt commit
     }
 
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
