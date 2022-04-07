@@ -24,7 +24,7 @@ namespace SP.Data
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-        
+        //Hello there, everyone!
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
