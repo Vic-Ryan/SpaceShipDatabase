@@ -27,6 +27,13 @@ namespace SP.WebApi.Controllers
             return Ok(ships);
         }
 
+        public IHttpActionResult Get(int id)
+        {
+            ShipService shipService = CreateShipService();
+            var ship = shipService.GetShipById(id);
+            return Ok(ship);
+        }
+
         public IHttpActionResult Post(ShipCreate ship)
         {
             if (!ModelState.IsValid)

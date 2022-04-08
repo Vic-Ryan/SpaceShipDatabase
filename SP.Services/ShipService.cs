@@ -61,5 +61,30 @@ namespace SP.Services
                 return query.ToArray();
             }
         }
+
+        public ShipDetail GetShipById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Ships
+                    .Single(e => e.Id == id && e.OwnerId == _userId);
+                return
+                    new ShipDetail
+                    {
+                        Id = entity.Id,
+                        ShipName = entity.ShipName,
+                        OriginName = entity.OriginName,
+                        Manufacturer = entity.Manufacturer,
+                        ShipSize = entity.ShipSize,
+                        ShipPurpose = entity.ShipPurpose,
+                        CaptainName = entity.CaptainName,
+                        CrewSize = entity.CrewSize,
+                        Capacity = entity.Capacity,
+                        TopSpeed = entity.TopSpeed
+                    };
+            }
+        }
     }
 }
