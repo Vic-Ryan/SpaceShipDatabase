@@ -32,7 +32,6 @@ namespace SP.Data
         {
             return new ApplicationDbContext();
         }
-
         public DbSet<Origin> Origins { get; set; }
         public DbSet<Ship> Ships { get; set; }
         public DbSet<Crew> Crews { get; set; }
