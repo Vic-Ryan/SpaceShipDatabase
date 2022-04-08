@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace SP.Models
 {
-    internal class OriginEdit
+    public class OriginEdit
     {
+        public string OriginId { get; set; }
+        public string OriginName { get; set; }
+        public int RegisteredShips { get; set; }
     }
 }

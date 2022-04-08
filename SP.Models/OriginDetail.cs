@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace SP.Models
 {
-    public class OriginListItem
+    public class OriginDetail
     {
-        public int OriginID { get; set; }
+        public int OriginId { get; set; }
         public string OriginName { get; set; }
         public DateTimeOffset CreationDate { get; set; }
         public int RegisteredShips { get; set; }
-
     }
 }

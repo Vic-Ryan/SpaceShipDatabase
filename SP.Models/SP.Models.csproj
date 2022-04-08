@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OriginCreate.cs" />
+    <Compile Include="OriginDetail.cs" />
     <Compile Include="OriginEdit.cs" />
     <Compile Include="OriginListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
