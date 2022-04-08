@@ -86,5 +86,27 @@ namespace SP.Services
                     };
             }
         }
+
+        public bool UpdateShip (ShipEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Ships.Single(e => e.Id == model.Id && e.OwnerId == _userId);
+
+                entity.ShipName = model.ShipName;
+                entity.OriginName = model.OriginName;
+                entity.Manufacturer = model.Manufacturer;
+                entity.ShipSize = model.ShipSize;
+                entity.ShipPurpose = model.ShipPurpose;
+                entity.CaptainName = model.CaptainName;
+                entity.CrewSize = model.CrewSize;
+                entity.Capacity = model.Capacity;
+                entity.TopSpeed = model.TopSpeed;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

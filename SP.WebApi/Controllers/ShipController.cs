@@ -46,5 +46,18 @@ namespace SP.WebApi.Controllers
 
             return Ok();
         }
+
+        public IHttpActionResult Put(ShipEdit ship)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateShipService();
+
+            if (!service.UpdateShip(ship))
+                return InternalServerError();
+
+            return Ok();
+        }
     }
 }
