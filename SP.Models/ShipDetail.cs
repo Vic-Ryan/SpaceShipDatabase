@@ -15,7 +15,7 @@ namespace SP.Models
         public string ShipName { get; set; }
         [Display(Name ="Created")]
         public DateTimeOffset Created_At { get; set; }
-        public string OriginName { get; set; }
+        public int? OriginId { get; set; }
         public string Manufacturer { get; set; }
         public string ShipSize { get; set; } 
         public string ShipPurpose { get; set; }

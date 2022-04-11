@@ -53,7 +53,7 @@ namespace SP.Services
                    {
                        ShipId = e.Id,
                        ShipName = e.ShipName,
-                       OriginName = e.OriginName,
+                       OriginId = e.OriginId,
                        Created_At = e.Created_At
                    }
                         );
@@ -75,7 +75,7 @@ namespace SP.Services
                     {
                         Id = entity.Id,
                         ShipName = entity.ShipName,
-                        OriginName = entity.OriginName,
+                        OriginId = entity.OriginId,
                         Manufacturer = entity.Manufacturer,
                         ShipSize = entity.ShipSize,
                         ShipPurpose = entity.ShipPurpose,
@@ -96,7 +96,7 @@ namespace SP.Services
                     .Ships.Single(e => e.Id == model.Id && e.OwnerId == _userId);
 
                 entity.ShipName = model.ShipName;
-                entity.OriginName = model.OriginName;
+                entity.OriginId = model.OriginId;
                 entity.Manufacturer = model.Manufacturer;
                 entity.ShipSize = model.ShipSize;
                 entity.ShipPurpose = model.ShipPurpose;

@@ -18,8 +18,8 @@ namespace SP.Data
         public string ShipName { get; set; }
         public DateTimeOffset Created_At { get; set; }
         //[ForeignKey(nameof(Origin))]
-        [Required]
-        public string OriginName { get; set; }
+        public int? OriginId { get; set; }
+        //public virtual Origin Origin { get; set; } 
         [Required]
         public string Manufacturer { get; set; }
         [Required]
