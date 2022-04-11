@@ -108,5 +108,20 @@ namespace SP.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public bool DeleteShip (int shipId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Ships
+                    .Single(e => e.Id == shipId && e.OwnerId == _userId);
+
+                ctx.Ships.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

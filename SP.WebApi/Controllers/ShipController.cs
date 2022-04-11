@@ -59,5 +59,15 @@ namespace SP.WebApi.Controllers
 
             return Ok();
         }
+
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateShipService();
+
+            if (!service.DeleteShip(id))
+                return InternalServerError();
+
+            return Ok();
+        }
     }
 }
