@@ -88,7 +88,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Crew.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Origin.cs" />

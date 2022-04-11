@@ -18,7 +18,7 @@ namespace SP.Models
     }
     public class OriginEdit
     {
-        public string OriginId { get; set; }
+        public int OriginId { get; set; }
         public string OriginName { get; set; }
         public int RegisteredShips { get; set; }
     }
