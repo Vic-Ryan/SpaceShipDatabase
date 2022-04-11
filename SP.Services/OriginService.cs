@@ -70,8 +70,5 @@ namespace SP.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-
-
-
     }
 }
