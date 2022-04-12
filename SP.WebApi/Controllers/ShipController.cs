@@ -1,5 +1,7 @@
-﻿using SP.Data;
+﻿using Microsoft.AspNet.Identity;
+using SP.Data;
 using SP.Models;
+using SP.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,120 +11,63 @@ using System.Web.Http;
 
 namespace SP.WebApi.Controllers
 {
-    public class ShipService
+    [Authorize]
+    public class ShipController : ApiController
     {
-        private readonly Guid _userId;
-
-        public ShipService(Guid userId)
+        private ShipService CreateShipService()
         {
-            _userId = userId;
+            var shipService = new ShipService();
+            return shipService;
         }
 
-        public bool CreateShip(ShipCreate model)
+        public IHttpActionResult Get()
         {
-            var entity = new Ship()
-            {
-                OwnerId = _userId,
-                ShipName = model.ShipName,
-                Manufacturer = model.Manufacturer,
-                ShipSize = model.ShipSize,
-                ShipPurpose = model.ShipPurpose,
-                CaptainName = model.CaptainName,
-                CrewSize = model.CrewSize,
-                Capacity = model.Capacity,
-                TopSpeed = model.TopSpeed
-            };
-
-            using (var ctx = new ApplicationDbContext())
-            {
-                ctx.Ships.Add(entity);
-                return ctx.SaveChanges() == 1;
-            }
+            ShipService shipService = CreateShipService();
+            var ships = shipService.GetShips();
+            return Ok(ships);
         }
 
-        public IEnumerable<ShipListItem> GetShips()
+        public IHttpActionResult Get(int id)
         {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query =
-                    ctx
-                    .Ships
-                    .Where(e => e.OwnerId == _userId)
-                    .Select
-                    (e =>
-                   new ShipListItem
-                   {
-                       ShipId = e.Id,
-                       ShipName = e.ShipName,
-                       OriginId = e.OriginId,
-                       Created_At = e.Created_At
-                   }
-                        );
-
-                return query.ToArray();
-            }
+            ShipService shipService = CreateShipService();
+            var ship = shipService.GetShipById(id);
+            return Ok(ship);
         }
 
-        public ShipDetail GetShipById(int id)
+        public IHttpActionResult Post(ShipCreate ship)
         {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                    ctx
-                    .Ships
-                    .Single(e => e.Id == id && e.OwnerId == _userId);
-                return
-                    new ShipDetail
-                    {
-                        Id = entity.Id,
-                        ShipName = entity.ShipName,
-                        OriginId = entity.OriginId,
-                        Manufacturer = entity.Manufacturer,
-                        ShipSize = entity.ShipSize,
-                        ShipPurpose = entity.ShipPurpose,
-                        CaptainName = entity.CaptainName,
-                        CrewSize = entity.CrewSize,
-                        Capacity = entity.Capacity,
-                        TopSpeed = entity.TopSpeed
-                    };
-            }
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateShipService();
+
+            if (!service.CreateShip(ship))
+                return InternalServerError();
+
+            return Ok();
         }
 
-        public bool UpdateShip(ShipEdit model)
+        public IHttpActionResult Put(ShipEdit ship)
         {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                    ctx
-                    .Ships.Single(e => e.Id == model.Id && e.OwnerId == _userId);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-                entity.ShipName = model.ShipName;
-                entity.OriginId = model.OriginId;
-                entity.Manufacturer = model.Manufacturer;
-                entity.ShipSize = model.ShipSize;
-                entity.ShipPurpose = model.ShipPurpose;
-                entity.CaptainName = model.CaptainName;
-                entity.CrewSize = model.CrewSize;
-                entity.Capacity = model.Capacity;
-                entity.TopSpeed = model.TopSpeed;
+            var service = CreateShipService();
 
-                return ctx.SaveChanges() == 1;
-            }
+            if (!service.UpdateShip(ship))
+                return InternalServerError();
+
+            return Ok();
         }
 
-        public bool DeleteShip(int shipId)
+        public IHttpActionResult Delete(int id)
         {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                    ctx
-                    .Ships
-                    .Single(e => e.Id == shipId && e.OwnerId == _userId);
+            var service = CreateShipService();
 
-                ctx.Ships.Remove(entity);
+            if (!service.DeleteShip(id))
+                return InternalServerError();
 
-                return ctx.SaveChanges() == 1;
-            }
+            return Ok();
         }
     }
 }

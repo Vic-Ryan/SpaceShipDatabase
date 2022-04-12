@@ -10,18 +10,13 @@ namespace SP.Services
 {
     public class ShipService
     {
-        private readonly Guid _userId;
-
-        public ShipService(Guid userId)
-        {
-            _userId = userId;
-        }
+       
 
         public bool CreateShip(ShipCreate model)
         {
             var entity = new Ship()
             {
-                OwnerId = _userId,
+                
                 ShipName = model.ShipName,
                 Manufacturer = model.Manufacturer,
                 ShipSize = model.ShipSize,
@@ -46,7 +41,6 @@ namespace SP.Services
                 var query =
                     ctx
                     .Ships
-                    .Where(e => e.OwnerId == _userId)
                     .Select
                     (e =>
                    new ShipListItem
@@ -69,7 +63,7 @@ namespace SP.Services
                 var entity =
                     ctx
                     .Ships
-                    .Single(e => e.Id == id && e.OwnerId == _userId);
+                    .Single(e => e.Id == id);
                 return
                     new ShipDetail
                     {
@@ -93,7 +87,7 @@ namespace SP.Services
             {
                 var entity =
                     ctx
-                    .Ships.Single(e => e.Id == model.Id && e.OwnerId == _userId);
+                    .Ships.Single(e => e.Id == model.Id);
 
                 entity.ShipName = model.ShipName;
                 entity.OriginId = model.OriginId;
@@ -116,7 +110,7 @@ namespace SP.Services
                 var entity =
                     ctx
                     .Ships
-                    .Single(e => e.Id == shipId && e.OwnerId == _userId);
+                    .Single(e => e.Id == shipId);
 
                 ctx.Ships.Remove(entity);
 
