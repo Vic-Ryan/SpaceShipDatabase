@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SP.Services
+{
+    public class CrewService
+    {
+    }
+    [Key]
+    public int CrewId { get; set; }
+    [Required]
+    public DateTimeOffset Created_At { get; set; }
+    [Required]
+    public string Ship { get; set; }
+
+    //[ForeignKey(nameof(Origin))]
+    [Required]
+    public virtual string OriginName { get; set; }
+    [Required]
+    public string CrewName { get; set; }
+    public string CrewRole { get; set; }
+    public string CrewDescription { get; set; }
+    public string CrewMembers { get; set; }
+
+}

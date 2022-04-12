@@ -54,11 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrewService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SP.Data\SP.Data.csproj">
+      <Project>{9ab387d2-771d-46ec-a132-a72461bca58f}</Project>
+      <Name>SP.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SP.Models\SP.Models.csproj">
+      <Project>{470aa25a-304c-4fa4-842f-93af666c864d}</Project>
+      <Name>SP.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
