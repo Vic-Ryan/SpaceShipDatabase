@@ -11,7 +11,7 @@ using System.Web.Http;
 
 namespace SP.WebApi.Controllers
 {
-    [Authorize]
+    
     public class ShipController : ApiController
     {
         private ShipService CreateShipService()

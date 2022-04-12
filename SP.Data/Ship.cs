@@ -11,7 +11,6 @@ namespace SP.Data
     {
         [Key]
         public int Id { get; set; }
-        [Required]
         public string ShipName { get; set; }
         public DateTimeOffset Created_At { get; set; }
         //[ForeignKey(nameof(Origin))]

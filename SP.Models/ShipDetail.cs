@@ -11,7 +11,6 @@ namespace SP.Models
     {
 
         public int Id { get; set; }
-        public Guid OwnerId { get; set; }
         public string ShipName { get; set; }
         [Display(Name = "Created")]
         public DateTimeOffset Created_At { get; set; }
