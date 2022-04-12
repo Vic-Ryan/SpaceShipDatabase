@@ -59,6 +59,10 @@
   <ItemGroup>
     <Compile Include="OriginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShipCreate.cs" />
+    <Compile Include="ShipDetail.cs" />
+    <Compile Include="ShipEdit.cs" />
+    <Compile Include="ShipListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
