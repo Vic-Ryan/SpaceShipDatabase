@@ -16,9 +16,9 @@ namespace SP.Data
         [Required]
         public string Ship { get; set; }
 
-        [ForeignKey(nameof(Origin))]
+        //[ForeignKey(nameof(Origin))]
         [Required]
-        public string OriginName { get; set; }
+        public virtual string OriginName { get; set; }
         [Required]
         public string CrewName { get; set; }
         public string CrewRole { get; set; }
