@@ -12,6 +12,8 @@ namespace SP.Data
         [Key]
         public int OriginId { get; set; }
         [Required]
+        public Guid OwnerId { get; set; }
+        [Required]
         public string OriginName { get; set; }
         [Required]
         public DateTimeOffset CreationDate { get; set; }

@@ -1,4 +1,5 @@
-﻿using SP.Models;
+﻿using Microsoft.AspNet.Identity;
+using SP.Models;
 using SP.Services;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,11 @@ namespace SP.WebApi.Controllers
 {
     public class OriginController : ApiController
     {
+        
         private OriginService CreateOriginService()
         {
-            
-            var originService = new OriginService();
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var originService = new OriginService(userId);
             return originService;
         }
 
@@ -41,7 +43,7 @@ namespace SP.WebApi.Controllers
         {
             OriginService originService = CreateOriginService();
             var origin = originService.GetOriginById(id);
-            return Ok();
+            return Ok(origin);
         }
         public IHttpActionResult Put(OriginEdit origin)
         {
@@ -51,6 +53,14 @@ namespace SP.WebApi.Controllers
             var service = CreateOriginService();
 
             if (!service.UpdateOrigin(origin))
+                return InternalServerError();
+
+            return Ok();
+        }
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateOriginService();
+            if (!service.DeleteOrigin(id))
                 return InternalServerError();
 
             return Ok();

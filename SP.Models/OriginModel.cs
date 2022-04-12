@@ -33,6 +33,7 @@ namespace SP.Models
     public class OriginDetail
     {
         public int OriginId { get; set; }
+        public Guid OwnerId { get; set; }
         public string OriginName { get; set; }
         public DateTimeOffset CreationDate { get; set; }
         public int RegisteredShips { get; set; }
