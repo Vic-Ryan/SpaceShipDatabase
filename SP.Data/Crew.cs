@@ -15,13 +15,13 @@ namespace SP.Data
         public DateTimeOffset Created_At { get; set; }
         [Required]
         public Guid OwnerId { get; set; }
-        [Required]
+
         public string Ship { get; set; }
 
         //[ForeignKey(nameof(Origin))]
         [Required]
         public virtual string OriginName { get; set; }
-        [Required]
+
         public string CrewName { get; set; }
         public string CrewRole { get; set; }
         public string CrewDescription { get; set; }
