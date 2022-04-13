@@ -50,5 +50,21 @@ namespace SP.WebApi.Controllers
             return crewService;
 
         }
+
+        public IHttpActionResult Put(CrewEdit Crew)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var service = CreateCrewService();
+            if (!service.UpdateCrew(Crew)) 
+            { 
+                return InternalServerError(); 
+            }
+            return Ok();
+        }
     }
+    
 }

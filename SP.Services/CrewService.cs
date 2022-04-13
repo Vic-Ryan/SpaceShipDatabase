@@ -84,5 +84,28 @@ namespace SP.Services
                     };
             }
         } 
+        public bool UpdateCrew(CrewEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Crews
+                        .Single(e => e.CrewId == model.CrewId && e.OwnerId == _userId);
+
+                entity.OwnerId = _userId;
+                entity.Created_At = model.Created_At;
+                entity.Modified_At = DateTimeOffset.UtcNow;
+                entity.CrewId = model.CrewId;
+                entity.Ship = model.Ship;
+                entity.OriginName = model.OriginName;
+                entity.CrewName = model.CrewName;
+                entity.CrewRole = model.CrewRole;
+                entity.CrewDescription = model.CrewDescription;
+                entity.CrewMembers = model.CrewMembers;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
