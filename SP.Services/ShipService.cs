@@ -69,7 +69,7 @@ namespace SP.Services
                 var entity =
                     ctx
                     .Ships
-                    .Single(e => e.Id == id && e.OwnerId == _userId);
+                    .Single(e => e.Id == id);
                 return
                     new ShipDetail
                     {
