@@ -65,6 +65,18 @@ namespace SP.WebApi.Controllers
             }
             return Ok();
         }
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateCrewService();
+
+            if (!service.DeleteCrew(id))
+            {
+                return InternalServerError();
+            }
+            return Ok();
+        }
+
+
     }
     
 }

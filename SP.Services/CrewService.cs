@@ -83,7 +83,7 @@ namespace SP.Services
                         CrewMembers = entity.CrewMembers
                     };
             }
-        } 
+        }
         public bool UpdateCrew(CrewEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -103,6 +103,20 @@ namespace SP.Services
                 entity.CrewRole = model.CrewRole;
                 entity.CrewDescription = model.CrewDescription;
                 entity.CrewMembers = model.CrewMembers;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteCrew(CrewEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Crews
+                        .Single(e => e.CrewId == model.CrewId && e.OwnerId == _userId);
+                ctx.Crews.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }
