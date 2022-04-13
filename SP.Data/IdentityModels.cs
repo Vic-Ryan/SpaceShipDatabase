@@ -33,8 +33,8 @@ namespace SP.Data
             return new ApplicationDbContext();
         }
 
-        public DbSet<Origin> Origins { get; set; }
-        public DbSet<Ship> Ships { get; set; }
+        //public DbSet<Origin> Origins { get; set; }
+        //public DbSet<Ship> Ships { get; set; }
         public DbSet<Crew> Crews { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
