@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CrewCreate.cs" />
+    <Compile Include="CrewDetail.cs" />
     <Compile Include="CrewEdit.cs" />
     <Compile Include="CrewListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
