@@ -11,12 +11,16 @@ namespace SP.Models
     {
         [Display(Name="Crew ID")]
         public int CrewId { get; set; }
+
         [Display(Name="Crew Name")]
         public string CrewName { get; set; }
+
         [Display(Name="Created")]
         public DateTimeOffset Created_At { get; set; }
+
         [Display(Name="Origin Name")]
         public virtual string OriginName { get; set; }
+
         public string Ship { get; set; }
     }
 }

@@ -108,14 +108,14 @@ namespace SP.Services
             }
         }
 
-        public bool DeleteCrew(CrewEdit model)
+        public bool DeleteCrew(int crewId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Crews
-                        .Single(e => e.CrewId == model.CrewId && e.OwnerId == _userId);
+                        .Single(e => e.CrewId == crewId && e.OwnerId == _userId);
                 ctx.Crews.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
