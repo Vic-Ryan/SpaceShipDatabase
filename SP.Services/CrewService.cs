@@ -38,6 +38,7 @@ namespace SP.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
         public IEnumerable<CrewListItem> GetCrews()
         {
             using (var ctx = new ApplicationDbContext())
@@ -45,7 +46,7 @@ namespace SP.Services
                 var query =
                     ctx
                         .Crews
-                        .Where(e => e.OwnerId == _userId)
+                        //.Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
                                 new CrewListItem
@@ -68,7 +69,7 @@ namespace SP.Services
                 var entity =
                     ctx
                         .Crews
-                        .Single(e => e.CrewId == id && e.OwnerId == _userId);
+                        .Single(e => e.CrewId == id);
                 return
                     new CrewDetail
                     {
