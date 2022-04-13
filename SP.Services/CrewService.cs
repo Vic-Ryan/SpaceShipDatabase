@@ -60,5 +60,29 @@ namespace SP.Services
                 return query.ToArray();
             }
         }
+
+        public CrewDetail GetCrewsById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Crews
+                        .Single(e => e.CrewId == id && e.OwnerId == _userId);
+                return
+                    new CrewDetail
+                    {
+                        OwnerId = _userId,
+                        Created_At = entity.Created_At,
+                        CrewId = entity.CrewId,
+                        Ship = entity.Ship,
+                        OriginName = entity.OriginName,
+                        CrewName = entity.CrewName,
+                        CrewRole = entity.CrewRole,
+                        CrewDescription = entity.CrewDescription,
+                        CrewMembers = entity.CrewMembers
+                    };
+            }
+        } 
     }
 }

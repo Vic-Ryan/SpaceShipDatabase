@@ -13,6 +13,7 @@ namespace SP.Data
         public int CrewId { get; set; }
         [Required]
         public DateTimeOffset Created_At { get; set; }
+        public DateTimeOffset Modified_At { get; set; }
         [Required]
         public Guid OwnerId { get; set; }
 

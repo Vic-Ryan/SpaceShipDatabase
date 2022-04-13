@@ -20,6 +20,13 @@ namespace SP.WebApi.Controllers
             return Ok(crews);
         }
 
+        public IHttpActionResult Get(int id)
+        {
+            CrewService crewService = CreateCrewService();
+            var crew = crewService.GetCrewsById(id);
+            return Ok(crew);
+        }
+
         public IHttpActionResult Post(CrewCreate crew)
         {
             if (!ModelState.IsValid)
