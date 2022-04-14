@@ -33,8 +33,8 @@ namespace SP.Data
             return new ApplicationDbContext();
         }
         public DbSet<Origin> Origin { get; set; }
-        //public DbSet<Ship> Ships { get; set; }
-        //public DbSet<Crew> Crew { get; set; }
+        public DbSet<Ship> Ships { get; set; }
+        public DbSet<Crew> Crews { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
@@ -45,7 +45,9 @@ namespace SP.Data
                 .Configurations
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
-        } //Comment to attempt commit
+
+        }
+
     }
 
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
