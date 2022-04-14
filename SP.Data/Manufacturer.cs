@@ -11,6 +11,7 @@ namespace SP.Data
     {
         [Key]
         public int Id { get; set; }
+        public Guid OwnerId { get; set; }
         public DateTimeOffset Created_At { get; set; }
         [Required]
         public string ManufacturerName { get; set; }

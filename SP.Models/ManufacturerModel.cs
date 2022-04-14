@@ -34,5 +34,13 @@ namespace SP.Models
         public int NumberOfShips { get; set; }
     }
 
-
+    public class ManufacturerDetail
+    {
+        public int Id { get; set; }
+        public string ManufacturerName { get; set; }
+        [Display(Name = "Created")]
+        public DateTimeOffset Created_At { get; set; }
+        public List<Ship> ListOfShips { get; set; }
+        public int NumberOfShip { get; set; }
+    }
 }
