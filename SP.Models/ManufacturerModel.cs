@@ -22,7 +22,7 @@ namespace SP.Models
     {
         public int Id { get; set; }
         public string ManufactuerName { get; set; }
-        public int NumberOfShips { get; set; }
+        public int? NumberOfShips { get; set; }
         public List<Ship> ListOfShips { get; set; }
         public DateTimeOffset Edited_On { get; set; }
     }
@@ -31,7 +31,7 @@ namespace SP.Models
     {
         public int Id { get; set; }
         public string ManufacturerName { get; set; }
-        public int NumberOfShips { get; set; }
+        public int? NumberOfShips { get; set; }
     }
 
     public class ManufacturerDetail
@@ -41,6 +41,6 @@ namespace SP.Models
         [Display(Name = "Created")]
         public DateTimeOffset Created_At { get; set; }
         public List<Ship> ListOfShips { get; set; }
-        public int NumberOfShip { get; set; }
+        public int? NumberOfShip { get; set; }
     }
 }

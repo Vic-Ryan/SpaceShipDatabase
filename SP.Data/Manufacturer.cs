@@ -13,6 +13,7 @@ namespace SP.Data
         public int Id { get; set; }
         public Guid OwnerId { get; set; }
         public DateTimeOffset Created_At { get; set; }
+        public DateTimeOffset Edited_At { get; set; }
         [Required]
         public string ManufacturerName { get; set; }
         public List<Ship> ListOfShips { get; set; }
