@@ -46,7 +46,7 @@ namespace SP.Services
                 var query =
                     ctx
                     .Ships
-                    .Where(e => e.OwnerId == _userId)
+                    //.Where(e => e.OwnerId == _userId)
                     .Select
                     (e =>
                    new ShipListItem
@@ -69,7 +69,7 @@ namespace SP.Services
                 var entity =
                     ctx
                     .Ships
-                    .Single(e => e.Id == id && e.OwnerId == _userId);
+                    .Single(e => e.Id == id); //&& e.OwnerId == _userId);
                 return
                     new ShipDetail
                     {
@@ -93,7 +93,7 @@ namespace SP.Services
             {
                 var entity =
                     ctx
-                    .Ships.Single(e => e.Id == model.Id && e.OwnerId == _userId);
+                    .Ships.Single(e => e.Id == model.Id); //&& e.OwnerId == _userId);
 
                 entity.ShipName = model.ShipName;
                 entity.OriginId = model.OriginId;
@@ -116,7 +116,7 @@ namespace SP.Services
                 var entity =
                     ctx
                     .Ships
-                    .Single(e => e.Id == shipId && e.OwnerId == _userId);
+                    .Single(e => e.Id == shipId); //&& e.OwnerId == _userId);
 
                 ctx.Ships.Remove(entity);
 

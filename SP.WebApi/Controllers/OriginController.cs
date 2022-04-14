@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace SP.WebApi.Controllers
 {
+    
     public class OriginController : ApiController
     {
         

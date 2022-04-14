@@ -73,7 +73,7 @@ namespace SP.Services
                 return
                     new CrewDetail
                     {
-                        OwnerId = _userId,
+                        //OwnerId = _userId,
                         Created_At = entity.Created_At,
                         CrewId = entity.CrewId,
                         Ship = entity.Ship,
@@ -92,9 +92,9 @@ namespace SP.Services
                 var entity =
                     ctx
                         .Crews
-                        .Single(e => e.CrewId == model.CrewId && e.OwnerId == _userId);
+                        .Single(e => e.CrewId == model.CrewId); //&& e.OwnerId == _userId);
 
-                entity.OwnerId = _userId;
+               // entity.OwnerId = _userId;
                 entity.Created_At = model.Created_At;
                 entity.Modified_At = DateTimeOffset.UtcNow;
                 entity.CrewId = model.CrewId;
@@ -116,7 +116,7 @@ namespace SP.Services
                 var entity =
                     ctx
                         .Crews
-                        .Single(e => e.CrewId == crewId && e.OwnerId == _userId);
+                        .Single(e => e.CrewId == crewId); //&& e.OwnerId == _userId);
                 ctx.Crews.Remove(entity);
 
                 return ctx.SaveChanges() == 1;

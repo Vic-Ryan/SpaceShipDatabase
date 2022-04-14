@@ -10,12 +10,12 @@ namespace SP.Services
 {
     public class OriginService
     {
-        private readonly Guid _userId;
+       private readonly Guid _userId;
 
-        public OriginService(Guid userId)
-        {
-            _userId = userId;
-        }
+       public OriginService(Guid userId)
+       {
+          _userId = userId;
+       }
 
         public bool CreateOrigin(OriginCreate model)
         {
