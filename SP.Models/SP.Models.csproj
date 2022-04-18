@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ManufacturerModel.cs" />
     <Compile Include="OriginModel.cs" />
     <Compile Include="CrewCreate.cs" />
     <Compile Include="CrewDetail.cs" />
@@ -71,6 +72,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SP.Data\SP.Data.csproj">
+      <Project>{9AB387D2-771D-46EC-A132-A72461BCA58F}</Project>
+      <Name>SP.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
