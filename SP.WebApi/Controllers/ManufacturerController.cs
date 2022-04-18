@@ -10,16 +10,16 @@ using System.Web.Http;
 
 namespace SP.WebApi.Controllers
 {
+    [Authorize]
     public class ManufacturerController : ApiController
     {
-
         private ManufacturerService CreateManufacturerService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var manufactuerService = new ManufacturerService(userId);
             return manufactuerService;
         }
-        
+
         public IHttpActionResult Get()
         {
             ManufacturerService mService = CreateManufacturerService();

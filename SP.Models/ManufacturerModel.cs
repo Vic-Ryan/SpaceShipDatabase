@@ -16,6 +16,8 @@ namespace SP.Models
         public int NumberOfShips { get; set; }
         public List<Ship> ListOfShips { get; set; }
         public DateTimeOffset Created_At { get; set; }
+        [Required]
+        public Guid OwnerId { get; set; }
     }
 
     public class ManufacturerEdit
@@ -25,6 +27,8 @@ namespace SP.Models
         public int? NumberOfShips { get; set; }
         public List<Ship> ListOfShips { get; set; }
         public DateTimeOffset Edited_On { get; set; }
+        [Required]
+        public Guid OwnerId { get; set; }
     }
 
     public class ManufacturerListItem
