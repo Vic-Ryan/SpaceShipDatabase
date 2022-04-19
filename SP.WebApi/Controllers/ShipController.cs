@@ -16,8 +16,8 @@ namespace SP.WebApi.Controllers
         
         private ShipService CreateShipService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var shipService = new ShipService(userId);
+            //var userId = Guid.Parse(User.Identity.GetUserId());
+            var shipService = new ShipService(); //(userId);
             return shipService;
         }
 

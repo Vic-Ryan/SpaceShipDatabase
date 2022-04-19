@@ -17,9 +17,9 @@ namespace SP.Models
         [Display(Name = "Created")]
         public DateTimeOffset Created_At { get; set; }
 
-        [Required]
-        public Guid OwnerId { get; set; }
-        public string Ship { get; set; }
+        //[Required]
+        //public Guid OwnerId { get; set; }
+        public string ShipName { get; set; }
 
         //[ForeignKey(nameof(Origin))]
         [Display(Name = "Origin Name")]

@@ -45,8 +45,8 @@ namespace SP.WebApi.Controllers
 
         private CrewService CreateCrewService()
         {
-           var userId = Guid.Parse(User.Identity.GetUserId());
-            var crewService = new CrewService(userId);
+            //var userId = Guid.Parse(User.Identity.GetUserId());
+            var crewService = new CrewService(); //(userId);
             return crewService;
 
         }

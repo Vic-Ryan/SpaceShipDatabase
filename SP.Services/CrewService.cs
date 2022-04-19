@@ -10,22 +10,21 @@ namespace SP.Services
 {
     public class CrewService
     {
-        private readonly Guid _userId;
+       // private readonly Guid _userId;
 
-        public CrewService(Guid userId)
-        {
-            _userId = userId;
-        }
+       // public CrewService(Guid userId)
+       // {
+          //  _userId = userId;
+      //  }
 
         public bool CreateCrew(CrewCreate model)
         {
             var entity =
                 new Crew()
                 {
-                    OwnerId = _userId,
+                    //OwnerId = _userId,
                     Created_At = DateTimeOffset.Now,
                     CrewId = model.CrewId,
-                    Ship = model.Ship,
                     OriginName = model.OriginName,
                     CrewName = model.CrewName,
                     CrewRole = model.CrewRole,
@@ -54,7 +53,7 @@ namespace SP.Services
                                     CrewId = e.CrewId,
                                     CrewName = e.CrewName,
                                     OriginName = e.OriginName,
-                                    Ship = e.Ship,
+                                    ShipName = e.ShipName,
                                     Created_At = e.Created_At
                                 }
                        );
@@ -76,7 +75,7 @@ namespace SP.Services
                         //OwnerId = _userId,
                         Created_At = entity.Created_At,
                         CrewId = entity.CrewId,
-                        Ship = entity.Ship,
+                        ShipName = entity.ShipName,
                         OriginName = entity.OriginName,
                         CrewName = entity.CrewName,
                         CrewRole = entity.CrewRole,
@@ -98,7 +97,7 @@ namespace SP.Services
                 entity.Created_At = model.Created_At;
                 entity.Modified_At = DateTimeOffset.UtcNow;
                 entity.CrewId = model.CrewId;
-                entity.Ship = model.Ship;
+                entity.ShipName = model.ShipName;
                 entity.OriginName = model.OriginName;
                 entity.CrewName = model.CrewName;
                 entity.CrewRole = model.CrewRole;

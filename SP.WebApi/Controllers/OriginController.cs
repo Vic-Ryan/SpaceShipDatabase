@@ -16,8 +16,8 @@ namespace SP.WebApi.Controllers
         
         private OriginService CreateOriginService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var originService = new OriginService(userId);
+            // var userId = Guid.Parse(User.Identity.GetUserId());
+            var originService = new OriginService(); //(userId);
             return originService;
         }
 

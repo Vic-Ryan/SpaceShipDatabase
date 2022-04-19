@@ -19,8 +19,8 @@ namespace SP.Models
         public DateTimeOffset Created_At { get; set; }
 
         [Display(Name="Origin Name")]
-        public virtual string OriginName { get; set; }
+        public string OriginName { get; set; }
 
-        public string Ship { get; set; }
+        public string ShipName { get; set; }
     }
 }

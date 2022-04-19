@@ -10,18 +10,18 @@ namespace SP.Services
 {
     public class ShipService
     {
-        private readonly Guid _userId;
+        //private readonly Guid _userId;
 
-        public ShipService(Guid userId)
-        {
-            _userId = userId;
-        }
+       // public ShipService(Guid userId)
+       // {
+           // _userId = userId;
+       // }
 
         public bool CreateShip (ShipCreate model)
         {
             var entity = new Ship()
             {
-                OwnerId = _userId,
+                //OwnerId = _userId,
                 ShipName = model.ShipName,
                 Manufacturer = model.Manufacturer,
                 ShipSize = model.ShipSize,
@@ -53,7 +53,7 @@ namespace SP.Services
                    {
                        ShipId = e.Id,
                        ShipName = e.ShipName,
-                       OriginId = e.OriginId,
+                      // OriginId = e.OriginId,
                        Created_At = e.Created_At
                    }
                         );
@@ -75,7 +75,7 @@ namespace SP.Services
                     {
                         Id = entity.Id,
                         ShipName = entity.ShipName,
-                        OriginId = entity.OriginId,
+                        //OriginId = entity.OriginId,
                         Manufacturer = entity.Manufacturer,
                         ShipSize = entity.ShipSize,
                         ShipPurpose = entity.ShipPurpose,
@@ -96,7 +96,7 @@ namespace SP.Services
                     .Ships.Single(e => e.Id == model.Id); //&& e.OwnerId == _userId);
 
                 entity.ShipName = model.ShipName;
-                entity.OriginId = model.OriginId;
+                entity.OriginName = model.OriginName;
                 entity.Manufacturer = model.Manufacturer;
                 entity.ShipSize = model.ShipSize;
                 entity.ShipPurpose = model.ShipPurpose;
