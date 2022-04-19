@@ -9,7 +9,50 @@ It's designed to be able to both create, edit, grab, and delete items from its d
 By using such commands through programs such as Postman, you will be able to access the database as well, including the seeded in content pre-prepared for use.
 
 The prograsm is also equipped with Swagger capabilities for ease of use as well.
-## Contributors
+
+To delete and update any inputs on the table, it requires a token of use from authorization along with a registered account. Putting and getting do not require such keys.
+
+### Origin 
+Origin comes with these required properties for uploading them. Aspects  such as creation date and owner id are handled automatically.
+```csharp
+string OriginName
+int RegisteredShips
+```
+
+### Ship
+Ships come with these required properties for uploading, with aspects as creation date, owner ID, and ship ID being handled automatically. Speed set as string to allow for specific universe speed descriptors.
+```csharp
+string ShipName
+int? OriginId
+string Manufacturer
+string ShipSize
+string ShipPurpose
+string CaptainName
+int CrewSize
+string Capacity
+string TopSpeed
+```
+
+### Crew
+Crew comes with these required properties for uploading. 
+```csharp
+string Ship
+virtual string OriginName
+string CrewName
+string CrewRole
+string CrewDescription
+string CrewMembers
+```
+
+### Manufacturer
+Manufacturer comes with these required properties for uploading
+```csharp
+string ManufacturerName
+List<Ship> ListOfShips
+int? NumberOfShips
+```
+
+## Contributions
 At this current state, the project is not open for outside contributions, and is only for use in ElevenFifty Academy and the students/teachers affiliated with the project.
 
 
