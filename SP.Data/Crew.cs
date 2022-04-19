@@ -23,6 +23,8 @@ namespace SP.Data
         [Required]
         public string OriginName { get; set; }
 
+        public int OriginId { get; set; }
+
         public string CrewName { get; set; }
         public string CrewRole { get; set; }
         public string CrewDescription { get; set; }

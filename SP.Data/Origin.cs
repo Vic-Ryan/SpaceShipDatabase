@@ -20,6 +20,6 @@ namespace SP.Data
         [Required]
         public int RegisteredShips { get; set; }
         public ICollection<Ship> Ships { get; set; }
-        public ICollection<Crew> Crew { get; set; }
+        
     }
 }

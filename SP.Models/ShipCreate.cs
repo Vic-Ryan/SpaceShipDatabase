@@ -25,6 +25,7 @@ namespace SP.Models
         public string Capacity { get; set; }
         [Required]
         public string TopSpeed { get; set; }
+        [Required]
         public string OriginName { get; set; }
     }
 }

@@ -29,7 +29,8 @@ namespace SP.Services
                 CaptainName = model.CaptainName,
                 CrewSize = model.CrewSize,
                 Capacity = model.Capacity,
-                TopSpeed = model.TopSpeed
+                TopSpeed = model.TopSpeed,
+                OriginName = model.OriginName
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -86,7 +87,23 @@ namespace SP.Services
                     };
             }
         }
-
+        public IEnumerable<ShipListItem> GetShipsByOrigin(string originName)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx
+                                .Ships
+                                .Where(e=>e.OriginName == originName)
+                                .Select(e => new ShipListItem()
+                                {
+                                    ShipId = e.Id,
+                                    ShipName = e.ShipName,
+                                    OriginName = e.OriginName,
+                                });
+                return entity.ToArray();
+               
+            }
+        }
         public bool UpdateShip (ShipEdit model)
         {
             using (var ctx = new ApplicationDbContext())
