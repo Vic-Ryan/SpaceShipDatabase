@@ -15,27 +15,22 @@ namespace SP.Models
         [Key]
         public int CrewShipId { get; set; }
 
+        [Required] 
+        [ForeignKey(nameof(Crew))]
+        public virtual Crew CrewId { get; set; }
+
+        [Required]
+        [ForeignKey(nameof(Ship))]
+        public virtual Ship Id { get; set; }
+
         [Required]
         public string RoleOnShip { get; set; }
 
         [Required] 
         public string Description { get; set; }
 
-        [Required] 
-        [ForeignKey(nameof(Crew))]
-        public virtual Crew Ship { get; set; }
-
-        [Required]
-        [ForeignKey(nameof(Ship))]
-        public virtual string ShipName { get; set; }
-
-        [Required]
-        public int Quantity { get; set; }
-
         [DataType(DataType.DateTime)]
         public DateTimeOffset Created_At { get; set; }
-
-
 
     }
 }
