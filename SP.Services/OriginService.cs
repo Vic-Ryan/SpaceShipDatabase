@@ -10,18 +10,18 @@ namespace SP.Services
 {
     public class OriginService
     {
-        private readonly Guid _userId;
+       //private readonly Guid _userId;
 
-        public OriginService(Guid userId)
-        {
-            _userId = userId;
-        }
+      // public OriginService(Guid userId)
+      // {
+         // _userId = userId;
+      // }
 
         public bool CreateOrigin(OriginCreate model)
         {
             var entity = new Origin()
             {
-                OwnerId = _userId,
+               // OwnerId = _userId,
                 OriginName = model.OriginName,
                 RegisteredShips = model.RegisteredShips,
                 CreationDate = model.CreationDate
@@ -71,7 +71,7 @@ namespace SP.Services
             {
                 var entity = ctx
                                 .Origin
-                                .Single(o => o.OriginId == model.OriginId && o.OwnerId == _userId);
+                                .Single(o => o.OriginId == model.OriginId); //&& o.OwnerId == _userId);
                 entity.OriginName = model.OriginName;
                 entity.RegisteredShips = model.RegisteredShips;
 
@@ -84,7 +84,7 @@ namespace SP.Services
             {
                 var entity = ctx
                                 .Origin
-                                .Single(e => e.OriginId == originId && e.OwnerId == _userId);
+                                .Single(e => e.OriginId == originId);//&& e.OwnerId == _userId);
 
                 ctx.Origin.Remove(entity);
 

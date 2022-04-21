@@ -10,13 +10,14 @@ using System.Web.Http;
 
 namespace SP.WebApi.Controllers
 {
+    
     public class OriginController : ApiController
     {
         
         private OriginService CreateOriginService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var originService = new OriginService(userId);
+            // var userId = Guid.Parse(User.Identity.GetUserId());
+            var originService = new OriginService(); //(userId);
             return originService;
         }
 
