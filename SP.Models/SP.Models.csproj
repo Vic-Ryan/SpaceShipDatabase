@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ManufacturerModel.cs" />
     <Compile Include="OriginModel.cs" />
     <Compile Include="CrewCreate.cs" />
     <Compile Include="CrewDetail.cs" />
