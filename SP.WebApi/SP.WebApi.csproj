@@ -212,6 +212,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CrewController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManufacturerController.cs" />
     <Compile Include="Controllers\OriginController.cs" />
     <Compile Include="Controllers\ShipController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />

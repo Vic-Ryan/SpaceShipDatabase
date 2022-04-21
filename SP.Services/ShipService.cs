@@ -10,18 +10,18 @@ namespace SP.Services
 {
     public class ShipService
     {
-        private readonly Guid _userId;
+        //private readonly Guid _userId;
 
-        public ShipService(Guid userId)
-        {
-            _userId = userId;
-        }
+       // public ShipService(Guid userId)
+       // {
+           // _userId = userId;
+       // }
 
         public bool CreateShip (ShipCreate model)
         {
             var entity = new Ship()
             {
-                OwnerId = _userId,
+                //OwnerId = _userId,
                 ShipName = model.ShipName,
                 Manufacturer = model.Manufacturer,
                 ShipSize = model.ShipSize,
@@ -29,7 +29,8 @@ namespace SP.Services
                 CaptainName = model.CaptainName,
                 CrewSize = model.CrewSize,
                 Capacity = model.Capacity,
-                TopSpeed = model.TopSpeed
+                TopSpeed = model.TopSpeed,
+                OriginName = model.OriginName
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -46,14 +47,14 @@ namespace SP.Services
                 var query =
                     ctx
                     .Ships
-                    .Where(e => e.OwnerId == _userId)
+                    //.Where(e => e.OwnerId == _userId)
                     .Select
                     (e =>
                    new ShipListItem
                    {
                        ShipId = e.Id,
                        ShipName = e.ShipName,
-                       OriginId = e.OriginId,
+                      // OriginId = e.OriginId,
                        Created_At = e.Created_At
                    }
                         );
@@ -69,13 +70,13 @@ namespace SP.Services
                 var entity =
                     ctx
                     .Ships
-                    .Single(e => e.Id == id && e.OwnerId == _userId);
+                    .Single(e => e.Id == id); 
                 return
                     new ShipDetail
                     {
                         Id = entity.Id,
                         ShipName = entity.ShipName,
-                        OriginId = entity.OriginId,
+                        //OriginId = entity.OriginId,
                         Manufacturer = entity.Manufacturer,
                         ShipSize = entity.ShipSize,
                         ShipPurpose = entity.ShipPurpose,
@@ -86,17 +87,33 @@ namespace SP.Services
                     };
             }
         }
-
+        public IEnumerable<ShipListItem> GetShipsByOrigin(string originName)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx
+                                .Ships
+                                .Where(e=>e.OriginName == originName)
+                                .Select(e => new ShipListItem()
+                                {
+                                    ShipId = e.Id,
+                                    ShipName = e.ShipName,
+                                    OriginName = e.OriginName,
+                                });
+                return entity.ToArray();
+               
+            }
+        }
         public bool UpdateShip (ShipEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                    .Ships.Single(e => e.Id == model.Id && e.OwnerId == _userId);
+                    .Ships.Single(e => e.Id == model.Id); //&& e.OwnerId == _userId);
 
                 entity.ShipName = model.ShipName;
-                entity.OriginId = model.OriginId;
+                entity.OriginName = model.OriginName;
                 entity.Manufacturer = model.Manufacturer;
                 entity.ShipSize = model.ShipSize;
                 entity.ShipPurpose = model.ShipPurpose;
@@ -116,7 +133,7 @@ namespace SP.Services
                 var entity =
                     ctx
                     .Ships
-                    .Single(e => e.Id == shipId && e.OwnerId == _userId);
+                    .Single(e => e.Id == shipId); //&& e.OwnerId == _userId);
 
                 ctx.Ships.Remove(entity);
 

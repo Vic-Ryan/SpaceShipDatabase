@@ -19,7 +19,7 @@ namespace SP.Data
         public DateTimeOffset CreationDate { get; set; }
         [Required]
         public int RegisteredShips { get; set; }
-
+        public ICollection<Ship> Ships { get; set; }
         
     }
 }

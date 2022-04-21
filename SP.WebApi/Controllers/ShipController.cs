@@ -10,13 +10,14 @@ using System.Web.Http;
 
 namespace SP.WebApi.Controllers
 {
-    [Authorize]
+    
     public class ShipController : ApiController
     {
+        
         private ShipService CreateShipService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var shipService = new ShipService(userId);
+            //var userId = Guid.Parse(User.Identity.GetUserId());
+            var shipService = new ShipService(); //(userId);
             return shipService;
         }
 
@@ -33,7 +34,7 @@ namespace SP.WebApi.Controllers
             var ship = shipService.GetShipById(id);
             return Ok(ship);
         }
-
+        
         public IHttpActionResult Post(ShipCreate ship)
         {
             if (!ModelState.IsValid)
@@ -46,7 +47,7 @@ namespace SP.WebApi.Controllers
 
             return Ok();
         }
-
+        
         public IHttpActionResult Put(ShipEdit ship)
         {
             if (!ModelState.IsValid)
@@ -59,7 +60,7 @@ namespace SP.WebApi.Controllers
 
             return Ok();
         }
-
+        
         public IHttpActionResult Delete(int id)
         {
             var service = CreateShipService();

@@ -17,10 +17,10 @@ namespace SP.Models
         public DateTimeOffset Modified_At { get; set; }
 
         public Guid OwnerId { get; set; }
-        public string Ship { get; set; }
+        public string ShipName { get; set; }
         //[ForeignKey(nameof(Origin))]
         [Display(Name = "Origin Name")]
-        public virtual string OriginName { get; set; }
+        public  string OriginName { get; set; }
 
         [Display(Name = "Crew Name")]
         public string CrewName { get; set; }

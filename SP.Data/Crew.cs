@@ -17,11 +17,13 @@ namespace SP.Data
         [Required]
         public Guid OwnerId { get; set; }
 
-        public string Ship { get; set; }
+        public string ShipName { get; set; }
 
         //[ForeignKey(nameof(Origin))]
         [Required]
-        public virtual string OriginName { get; set; }
+        public string OriginName { get; set; }
+
+        public int OriginId { get; set; }
 
         public string CrewName { get; set; }
         public string CrewRole { get; set; }

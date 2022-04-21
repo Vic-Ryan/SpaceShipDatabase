@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SP.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -28,7 +29,6 @@ namespace SP.Models
         public string OriginName { get; set; }
         public DateTimeOffset CreationDate { get; set; }
         public int RegisteredShips { get; set; }
-
     }
     public class OriginDetail
     {
@@ -37,5 +37,6 @@ namespace SP.Models
         public string OriginName { get; set; }
         public DateTimeOffset CreationDate { get; set; }
         public int RegisteredShips { get; set; }
+        public ICollection<Ship> Ships { get; set; }
     }
 }

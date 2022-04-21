@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace SP.WebApi.Controllers
 {
-    [Authorize]
+    
     public class CrewController : ApiController
     {
         public IHttpActionResult Get()
@@ -26,7 +26,7 @@ namespace SP.WebApi.Controllers
             var crew = crewService.GetCrewsById(id);
             return Ok(crew);
         }
-
+        
         public IHttpActionResult Post(CrewCreate crew)
         {
             if (!ModelState.IsValid)
@@ -45,12 +45,12 @@ namespace SP.WebApi.Controllers
 
         private CrewService CreateCrewService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var crewService = new CrewService(userId);
+            //var userId = Guid.Parse(User.Identity.GetUserId());
+            var crewService = new CrewService(); //(userId);
             return crewService;
 
         }
-
+        
         public IHttpActionResult Put(CrewEdit Crew)
         {
             if (!ModelState.IsValid)
@@ -65,6 +65,7 @@ namespace SP.WebApi.Controllers
             }
             return Ok();
         }
+        
         public IHttpActionResult Delete(int id)
         {
             var service = CreateCrewService();

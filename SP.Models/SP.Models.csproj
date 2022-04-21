@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JoiningCrewShip.cs" />
+    <Compile Include="ManufacturerModel.cs" />
     <Compile Include="OriginModel.cs" />
     <Compile Include="CrewCreate.cs" />
     <Compile Include="CrewDetail.cs" />
